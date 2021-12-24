@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ironyun</groupId>
+	<artifactId>fast-reid</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>fast-reid-java</module>
+		<module>fast-reid-test</module>
+		<module>fast-reid-benchmark</module>
+	</modules>
+
+	<properties>
+		<javacv-platform.version>1.5.7-SNAPSHOT</javacv-platform.version>
+		<pytorch-platform.version>1.10.0-1.5.7-SNAPSHOT</pytorch-platform.version>
+		<mkl-platform-redist.version>2021.3-1.5.6</mkl-platform-redist.version>
+		<opencv-platform.version>4.5.4-1.5.7-SNAPSHOT</opencv-platform.version>
+		<commons-io.version>2.11.0</commons-io.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<profiles>
+		<profile>
+			<id>windows</id>
+			<activation>
+				<os>
+					<family>windows</family>
+					<arch>amd64</arch>
+				</os>
+			</activation>
+			<properties>
+				<platform>windows-x86_64</platform>
+			</properties>
+		</profile>
+		<profile>
+			<id>linux-amd64</id>
+			<activation>
+				<os>
+					<family>linux</family>
+					<arch>amd64</arch>
+				</os>
+			</activation>
+			<properties>
+				<platform>linux-x86_64</platform>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>
